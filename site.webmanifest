@@ -1,0 +1,15 @@
+{
+  "name": "Teminat Group - Araç Değer Kaybı Tazminatı",
+  "short_name": "Teminat Group",
+  "description": "Kaza sonrası araç değer kaybı ve sigorta tazminatı danışmanlığı. Adana merkezli.",
+  "start_url": "/ototazminat-claude/",
+  "scope": "/ototazminat-claude/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "lang": "tr",
+  "icons": [
+    { "src": "/ototazminat-claude/assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/ototazminat-claude/assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

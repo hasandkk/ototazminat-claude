@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Araç Değer Kaybı Hesaplama - Ücretsiz Sorgulama | Teminat Group</title>
+  <meta name="description" content="Kaza sonrası aracınızda oluşan değer kaybını saniyeler içinde ücretsiz hesaplayın. Teminat Group uzman danışmanlığıyla hakkınızı hızlıca alın." />
+  <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: { brand: { 50:"#fef2f2",100:"#fee2e2",200:"#fecaca",300:"#fca5a5",400:"#f87171",500:"#ef4444",600:"#dc2626",700:"#b91c1c",800:"#991b1b" } },
+        fontFamily: { sans: ['"Plus Jakarta Sans"',"Inter","system-ui","sans-serif"] }
+      } }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    input[type=range]{-webkit-appearance:none;appearance:none;height:6px;border-radius:9999px;background:#e2e8f0;outline:none}
+    input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;border-radius:9999px;background:#dc2626;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+    input[type=range]::-moz-range-thumb{width:24px;height:24px;border:none;border-radius:9999px;background:#dc2626;cursor:pointer}
+  </style>
+</head>
+<body class="antialiased bg-slate-50 text-slate-800 font-sans min-h-screen">
+
+  <!-- top bar -->
+  <header class="bg-slate-900">
+    <div class="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center"><img src="assets/logo.svg" alt="Teminat Group" class="h-9 w-auto" /></a>
+      <a href="index.html" class="text-sm text-slate-300 hover:text-white transition">← Ana Sayfa</a>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 py-8 md:py-12">
+    <!-- progress -->
+    <div class="mb-8">
+      <p class="text-center text-xs font-semibold text-slate-400 tracking-wide mb-3">ADIM <span id="stepNum">1</span>/4</p>
+      <div class="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
+        <div id="progressBar" class="h-full bg-brand-600 transition-all duration-300" style="width:25%"></div>
+      </div>
+    </div>
+
+    <form id="calcForm" class="bg-white rounded-2xl shadow-xl p-6 md:p-8">
+      <!-- STEP 1: Araç -->
+      <section data-step="1">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 bg-rose-100 rounded-xl flex items-center justify-center mr-4"><svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg></div>
+          <div><h1 class="text-xl font-bold text-slate-900">Aracınızı Tanıyalım</h1><p class="text-sm text-slate-500">2 dakikada ücretsiz analiz</p></div>
+        </div>
+        <div class="mb-5">
+          <label class="block text-slate-700 text-sm font-semibold mb-2">Araç Yılı</label>
+          <select data-f-year class="w-full min-h-12 p-4 text-sm font-medium bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-brand-500 cursor-pointer"></select>
+        </div>
+        <div class="mb-5">
+          <label class="block text-slate-700 text-sm font-semibold mb-2">Araç Markası</label>
+          <select data-f-brand class="w-full min-h-12 p-4 text-sm font-medium bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-brand-500 cursor-pointer"></select>
+        </div>
+        <div class="mb-5">
+          <label class="block text-slate-700 text-sm font-semibold mb-2">Araç Modeli</label>
+          <select data-f-model class="w-full min-h-12 p-4 text-sm font-medium bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-brand-500 disabled:opacity-60 cursor-pointer" disabled><option value="">Model seçin</option></select>
+        </div>
+        <label class="flex items-center gap-3 cursor-pointer mb-6">
+          <input type="checkbox" data-f-notfound class="w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-500 cursor-pointer shrink-0" />
+          <span class="text-sm font-medium text-slate-700">Aracımı listede bulamadım</span>
+        </label>
+      </section>
+
+      <!-- STEP 2: Değer -->
+      <section data-step="2" class="hidden">
+        <h1 class="text-xl font-bold text-slate-900 mb-6">Kaza ve Değer Bilgileri</h1>
+        <div class="mb-5">
+          <label class="block text-slate-700 text-sm font-semibold mb-2">Aracınızın kaza öncesi piyasa değeri nedir?</label>
+          <input id="piyasa" type="text" inputmode="numeric" placeholder="1.000.000 TL" class="w-full min-h-12 p-4 text-sm font-medium bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-brand-500" />
+          <p class="text-xs text-slate-500 mt-2">Aracınızı <span class="underline">son kazası olmadan</span> bugün satacak olsanız alabileceğiniz tahmini fiyat.</p>
+        </div>
+        <div class="mb-5">
+          <label class="block text-slate-700 text-sm font-semibold mb-2">Araç Kilometresi</label>
+          <input id="km" type="text" inputmode="numeric" placeholder="25.000" class="w-full min-h-12 p-4 text-sm font-medium bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-brand-500" />
+        </div>
+        <div class="mb-6">
+          <label class="block text-slate-700 text-sm font-semibold mb-3">Kusur Oranı</label>
+          <input id="kusur" type="range" min="0" max="100" value="50" step="5" class="w-full" />
+          <div class="flex justify-between text-xs text-slate-500 mt-2">
+            <span class="text-center w-20">%0<br>(Tamamen Karşı Taraf Kusurlu)</span>
+            <span class="text-center font-bold text-brand-600 text-base" id="kusurVal">50%</span>
+            <span class="text-center w-20">%100<br>(Tamamen Ben Kusurluyum)</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-between py-3 border-t border-slate-100">
+          <span class="text-sm font-semibold text-slate-800">Kaza son 2 yıl içinde mi?</span>
+          <label class="inline-flex items-center gap-2 cursor-pointer"><span class="text-xs text-slate-400">Hayır</span><input type="checkbox" id="son2yil" class="sr-only peer" checked /><span class="relative w-12 h-6 bg-slate-200 rounded-full peer-checked:bg-brand-600 transition after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:w-5 after:h-5 after:bg-white after:rounded-full after:transition peer-checked:after:translate-x-6"></span><span class="text-xs text-slate-600">Evet</span></label>
+        </div>
+        <div class="flex items-center justify-between py-3 border-t border-slate-100 mb-6">
+          <span class="text-sm font-semibold text-slate-800">Bu kaza için daha önce değer kaybı tazminatı aldınız mı?</span>
+          <label class="inline-flex items-center gap-2 cursor-pointer"><span class="text-xs text-slate-400">Hayır</span><input type="checkbox" id="oncekiTazminat" class="sr-only peer" /><span class="relative w-12 h-6 bg-slate-200 rounded-full peer-checked:bg-brand-600 transition after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:w-5 after:h-5 after:bg-white after:rounded-full after:transition peer-checked:after:translate-x-6"></span><span class="text-xs text-slate-600">Evet</span></label>
+        </div>
+      </section>
+
+      <!-- STEP 3: İletişim -->
+      <section data-step="3" class="hidden">
+        <p class="text-center text-xs font-semibold text-slate-400 tracking-wide mb-1">SONUÇLARI GÖRMEK İÇİN…</p>
+        <h1 class="text-2xl font-bold text-slate-900 text-center mb-6">Son Bir Adım</h1>
+        <div class="mb-5">
+          <label class="block text-slate-700 text-sm font-semibold mb-2">Ad Soyad</label>
+          <input id="adsoyad" type="text" placeholder="Adınız Soyadınız" class="w-full min-h-12 p-4 text-sm font-medium bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-brand-500" />
+        </div>
+        <div class="mb-5">
+          <label class="block text-slate-700 text-sm font-semibold mb-2">Telefon</label>
+          <input id="telefon" type="tel" placeholder="05XX XXX XX XX" class="w-full min-h-12 p-4 text-sm font-medium bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-brand-500" />
+        </div>
+        <div class="mb-5">
+          <label class="block text-slate-700 text-sm font-semibold mb-2">Şehir</label>
+          <select id="sehir" class="w-full min-h-12 p-4 text-sm font-medium bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-brand-500 cursor-pointer"><option value="">Şehir seçin</option></select>
+        </div>
+        <div class="mb-5">
+          <p class="text-slate-700 text-sm font-semibold mb-2">Bu kazanızla ilgili bir avukata vekalet verdiniz mi?</p>
+          <div class="flex gap-3">
+            <label class="flex-1 flex items-center gap-2 p-3 border border-slate-200 rounded-xl cursor-pointer hover:border-brand-300"><input type="radio" name="avukat" value="evet" class="text-brand-600 focus:ring-brand-500" /><span class="text-sm">Evet</span></label>
+            <label class="flex-1 flex items-center gap-2 p-3 border border-slate-200 rounded-xl cursor-pointer hover:border-brand-300"><input type="radio" name="avukat" value="hayir" class="text-brand-600 focus:ring-brand-500" /><span class="text-sm">Hayır</span></label>
+          </div>
+        </div>
+        <label class="flex items-start gap-3 cursor-pointer mb-6">
+          <input type="checkbox" id="kvkk" class="w-4 h-4 mt-1 rounded border-slate-300 text-brand-600 focus:ring-brand-500 shrink-0" />
+          <span class="text-xs text-slate-500 leading-relaxed">Kişisel verilerimin işlenmesine ilişkin <a href="pages/aydinlatma-metni.html" class="text-brand-600 underline" target="_blank">Aydınlatma Metni</a>'ni okudum. Hesaplama sonucumla ilgili detaylı bilgilendirme ve danışmanlık almak amacıyla uzman ekibinizin beni aramasına/ulaşmasına izin veriyorum.</span>
+        </label>
+        <p id="formError" class="hidden text-sm text-brand-600 mb-3"></p>
+      </section>
+
+      <!-- STEP 4: Sonuç -->
+      <section data-step="4" class="hidden text-center">
+        <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4"><svg class="w-8 h-8 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div>
+        <h1 class="text-2xl font-bold text-slate-900 mb-2">Tahmini Değer Kaybınız</h1>
+        <p class="text-slate-500 text-sm mb-6">Aşağıdaki tutar ön bilgilendirme amaçlıdır. Kesin tutar uzman incelemesi sonrası netleşir.</p>
+        <div class="bg-slate-50 rounded-2xl p-8 mb-6">
+          <p class="text-4xl md:text-5xl font-bold text-brand-600" id="resultValue">₺0</p>
+          <p class="text-sm text-slate-500 mt-2" id="resultCar"></p>
+        </div>
+        <div class="bg-emerald-50 border border-emerald-100 rounded-xl p-4 mb-6 text-left">
+          <p class="text-sm text-emerald-800">✓ Talebiniz alındı. Uzman ekibimiz <span class="font-semibold">1 saat içinde</span> sizi arayarak süreci ücretsiz başlatacaktır.</p>
+        </div>
+        <a href="index.html" class="inline-flex items-center justify-center w-full min-h-12 py-4 px-8 text-sm text-white font-bold bg-slate-900 hover:bg-slate-800 rounded-xl transition">Ana Sayfaya Dön</a>
+      </section>
+
+      <!-- nav buttons -->
+      <div class="flex items-center gap-3 mt-2" id="navBtns">
+        <button type="button" id="backBtn" class="hidden flex-1 min-h-12 py-3 px-6 text-sm font-semibold text-slate-700 border border-slate-200 rounded-xl hover:bg-slate-50 transition">← Geri</button>
+        <button type="button" id="nextBtn" class="flex-1 min-h-12 py-4 px-8 text-sm text-white font-bold bg-brand-600 hover:bg-brand-500 rounded-xl transition flex items-center justify-center">İleri →</button>
+      </div>
+    </form>
+
+    <div class="flex items-center justify-center gap-2 mt-6 text-slate-400">
+      <img src="assets/logo.svg" alt="Teminat Group" class="h-7 w-auto opacity-70" />
+    </div>
+    <p class="text-center text-xs text-slate-400 mt-3">
+      <a href="pages/aydinlatma-metni.html" class="hover:text-slate-600">KVKK Aydınlatma</a> ·
+      <a href="pages/gizlilik-politikasi.html" class="hover:text-slate-600">Gizlilik</a> ·
+      <a href="pages/kullanim-kosullari.html" class="hover:text-slate-600">Kullanım Koşulları</a>
+    </p>
+  </main>
+
+  <script src="assets/main.js"></script>
+  <script>
+  (function () {
+    var CAR = window.TEMINAT.CAR_DATA;
+    var step = 1;
+    var maxStep = 4;
+    var form = document.getElementById("calcForm");
+    var yearSel = form.querySelector("[data-f-year]");
+    var brandSel = form.querySelector("[data-f-brand]");
+    var modelSel = form.querySelector("[data-f-model]");
+    var notFound = form.querySelector("[data-f-notfound]");
+
+    window.TEMINAT.fillYears(yearSel);
+    window.TEMINAT.fillBrands(brandSel);
+    brandSel.addEventListener("change", function () {
+      if (brandSel.value && CAR[brandSel.value]) {
+        window.TEMINAT.fillSelect(modelSel, CAR[brandSel.value], "Model seçin");
+        modelSel.disabled = false;
+      } else { window.TEMINAT.fillSelect(modelSel, [], "Model seçin"); modelSel.disabled = true; }
+    });
+    notFound.addEventListener("change", function () {
+      var d = notFound.checked;
+      yearSel.disabled = d; brandSel.disabled = d;
+      modelSel.disabled = d || !brandSel.value;
+    });
+
+    // prefill from query string
+    var qs = new URLSearchParams(location.search);
+    if (qs.get("yil")) yearSel.value = qs.get("yil");
+    if (qs.get("marka")) { brandSel.value = qs.get("marka"); brandSel.dispatchEvent(new Event("change")); }
+    if (qs.get("model")) setTimeout(function(){ modelSel.value = qs.get("model"); }, 0);
+    if (qs.get("notfound")) { notFound.checked = true; notFound.dispatchEvent(new Event("change")); }
+
+    // Turkish cities
+    var cities = ["Adana","Adıyaman","Afyonkarahisar","Ağrı","Amasya","Ankara","Antalya","Aydın","Balıkesir","Bursa","Denizli","Diyarbakır","Elazığ","Erzurum","Eskişehir","Gaziantep","Hatay","Isparta","Mersin","İstanbul","İzmir","Kahramanmaraş","Kayseri","Kocaeli","Konya","Malatya","Manisa","Mardin","Muğla","Ordu","Sakarya","Samsun","Şanlıurfa","Tekirdağ","Trabzon","Van"];
+    var sehirSel = document.getElementById("sehir");
+    cities.forEach(function (c) { var o = document.createElement("option"); o.value = c; o.textContent = c; sehirSel.appendChild(o); });
+
+    // number formatting
+    function fmt(el) {
+      el.addEventListener("input", function () {
+        var v = el.value.replace(/\D/g, "");
+        el.value = v ? Number(v).toLocaleString("tr-TR") : "";
+      });
+    }
+    fmt(document.getElementById("piyasa"));
+    fmt(document.getElementById("km"));
+
+    var kusur = document.getElementById("kusur");
+    var kusurVal = document.getElementById("kusurVal");
+    kusur.addEventListener("input", function () { kusurVal.textContent = kusur.value + "%"; });
+
+    function showStep(n) {
+      form.querySelectorAll("[data-step]").forEach(function (s) {
+        s.classList.toggle("hidden", Number(s.getAttribute("data-step")) !== n);
+      });
+      document.getElementById("stepNum").textContent = n;
+      document.getElementById("progressBar").style.width = (n / maxStep * 100) + "%";
+      document.getElementById("backBtn").classList.toggle("hidden", n === 1 || n === 4);
+      var nextBtn = document.getElementById("nextBtn");
+      if (n === 4) { document.getElementById("navBtns").classList.add("hidden"); }
+      else { nextBtn.textContent = (n === 3) ? "Ücretsiz Hesapla ve Sonucu Gönder" : "İleri →"; }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function num(id) { return Number(document.getElementById(id).value.replace(/\D/g, "")) || 0; }
+
+    function validate() {
+      var err = document.getElementById("formError");
+      err.classList.add("hidden");
+      if (step === 1) {
+        if (!notFound.checked && (!yearSel.value || !brandSel.value || !modelSel.value)) {
+          alert("Lütfen araç bilgilerini seçin veya 'Aracımı listede bulamadım' kutusunu işaretleyin."); return false;
+        }
+      } else if (step === 2) {
+        if (num("piyasa") <= 0) { alert("Lütfen aracınızın piyasa değerini girin."); return false; }
+      } else if (step === 3) {
+        if (!document.getElementById("adsoyad").value.trim() || !document.getElementById("telefon").value.trim() || !sehirSel.value) {
+          err.textContent = "Lütfen ad soyad, telefon ve şehir alanlarını doldurun."; err.classList.remove("hidden"); return false;
+        }
+        if (!document.getElementById("kvkk").checked) {
+          err.textContent = "Devam etmek için Aydınlatma Metni onayını işaretleyin."; err.classList.remove("hidden"); return false;
+        }
+      }
+      return true;
+    }
+
+    function calculate() {
+      var piyasa = num("piyasa");
+      var km = num("km");
+      var yil = Number(yearSel.value) || new Date().getFullYear();
+      var age = Math.max(0, new Date().getFullYear() - yil);
+      var kusurOrani = Number(kusur.value) / 100; // ben kusurlu oranı
+      var karsiTarafKusuru = 1 - kusurOrani;
+
+      // base loss rate ~ 8% adjusted by age and km
+      var rate = 0.09;
+      rate -= age * 0.006;          // older car, lower rate
+      if (km > 100000) rate -= 0.02;
+      else if (km > 50000) rate -= 0.01;
+      if (rate < 0.02) rate = 0.02;
+
+      var loss = piyasa * rate * karsiTarafKusuru;
+      if (document.getElementById("oncekiTazminat").checked) loss = 0;
+      if (!document.getElementById("son2yil").checked) loss *= 0.4; // zaman aşımı riski
+      loss = Math.round(loss / 100) * 100;
+
+      document.getElementById("resultValue").textContent = "₺" + loss.toLocaleString("tr-TR");
+      var carTxt = notFound.checked ? "Aracınız" : ([yearSel.value, brandSel.value, modelSel.value].filter(Boolean).join(" "));
+      document.getElementById("resultCar").textContent = carTxt;
+    }
+
+    document.getElementById("nextBtn").addEventListener("click", function () {
+      if (!validate()) return;
+      if (step === 3) calculate();
+      step++;
+      if (step > maxStep) step = maxStep;
+      showStep(step);
+    });
+    document.getElementById("backBtn").addEventListener("click", function () {
+      step = Math.max(1, step - 1); showStep(step);
+    });
+
+    showStep(1);
+  })();
+  </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hasandkk.github.io/ototazminat-claude/sitemap.xml
+Sitemap: https://teminatdegerkaybi.com/sitemap.xml

@@ -97,7 +97,11 @@
         {"@type":"Question","name":"Ön ödeme yapmam gerekiyor mu?","acceptedAnswer":{"@type":"Answer","text":"Hayır. Peşin ücret alınmaz; süreç masrafları Teminat Group tarafından karşılanır. Hizmet bedeli yalnızca tazminat tahsil edildiğinde ödemeden düşülerek alınır."}},
         {"@type":"Question","name":"Süreç ne kadar sürer?","acceptedAnswer":{"@type":"Answer","text":"Dosyanın niteliğine göre genellikle 15 gün ile 4 ay arasında sonuçlanır."}},
         {"@type":"Question","name":"Hangi evraklara ihtiyacım var?","acceptedAnswer":{"@type":"Answer","text":"Genellikle kaza tutanağı, kimlik ve ruhsat fotokopisi gibi temel belgeler yeterlidir. Eksik evrakların temini Teminat Group tarafından yapılır."}},
-        {"@type":"Question","name":"Tazminat alma garantisi var mı?","acceptedAnswer":{"@type":"Answer","text":"Nihai karar sigorta şirketi ve tahkim merciine bağlı olduğundan %100 garanti verilmez. Dosyalar ücretsiz incelenir ve yalnızca kazanma ihtimali güçlü olanlar işleme alınır; olumsuz sonuçta müşteriden ücret alınmaz."}}
+        {"@type":"Question","name":"Tazminat alma garantisi var mı?","acceptedAnswer":{"@type":"Answer","text":"Nihai karar sigorta şirketi ve tahkim merciine bağlı olduğundan %100 garanti verilmez. Dosyalar ücretsiz incelenir ve yalnızca kazanma ihtimali güçlü olanlar işleme alınır; olumsuz sonuçta müşteriden ücret alınmaz."}},
+        {"@type":"Question","name":"Değer kaybı tazminatında zaman aşımı süresi nedir?","acceptedAnswer":{"@type":"Answer","text":"Trafik sigortasına başvuru için kaza tarihinden itibaren genellikle 2 yıl içinde harekete geçmek gerekir. Bazı hâllerde ceza zamanaşımı nedeniyle bu süre uzayabilir."}},
+        {"@type":"Question","name":"Değer kaybını kasko mu, karşı tarafın sigortası mı öder?","acceptedAnswer":{"@type":"Answer","text":"Değer kaybı, kusurlu sürücünün Zorunlu Trafik Sigortası (ZMSS) tarafından kusur oranı kadar ödenir; kendi kaskonuz bu farkı karşılamaz."}},
+        {"@type":"Question","name":"Hangi durumlarda araç değer kaybı alınamaz?","acceptedAnswer":{"@type":"Answer","text":"Kazada %100 kusurlu olmanız, aracın ağır hasar/pert kaydı bulunması, çok yüksek kilometre veya ileri yaş gibi durumlar talebi zorlaştırır."}},
+        {"@type":"Question","name":"Adana ve çevresinde değer kaybı hizmeti veriyor musunuz?","acceptedAnswer":{"@type":"Answer","text":"Seyhan ofisimizden Adana, Mersin, Osmaniye, Hatay ve Kahramanmaraş başta olmak üzere bölge genelinde, ayrıca tüm Türkiye genelinde online hizmet veriyoruz."}}
       ]
     }
   ]
@@ -111,7 +115,7 @@
     <div class="w-full max-w-7xl px-4 md:px-6 mx-auto">
       <nav class="flex justify-between items-center py-4">
         <a class="flex items-center" href="index.html" aria-label="Teminat Group Ana Sayfa">
-          <img alt="Teminat Group" class="h-9 md:h-10 w-auto object-contain" src="assets/logo.png" />
+          <img alt="Teminat Group araç değer kaybı danışmanlığı logosu" width="160" height="59" class="h-9 md:h-10 w-auto object-contain" src="assets/logo.png" />
         </a>
         <div class="lg:hidden">
           <button type="button" data-menu-open class="flex items-center py-2 px-3 text-brand-500 hover:text-brand-400 rounded border border-slate-600 hover:border-slate-500" aria-label="Menüyü aç/kapat">
@@ -169,7 +173,7 @@
           <div class="flex flex-col lg:flex-row lg:flex-wrap -mx-4 items-center gap-8 lg:gap-0">
             <div class="w-full lg:w-1/2 px-4 mb-8 lg:mb-0">
               <span class="inline-block py-2 px-4 mb-4 md:mb-6 text-xs font-semibold text-brand-400 bg-brand-500/10 rounded-full">Adana Merkezli • Ön Ödemesiz Danışmanlık</span>
-              <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-4 md:mb-6 font-bold text-white leading-tight">Kazada Kaybettiğiniz <span class="text-brand-500">Aracınızın Değerini</span> Geri Kazanın.</h1>
+              <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-4 md:mb-6 font-bold text-white leading-tight">Kazada Oluşan <span class="text-brand-500">Araç Değer Kaybı Tazminatınızı</span> Geri Alın.</h1>
               <p class="text-base md:text-lg text-slate-400 leading-relaxed mb-6 md:mb-8">Aracınızın ikinci el değerinde oluşan kaybı ve diğer tazminat haklarınızı sizin yerinize takip ediyoruz. Başvuru, evrak ve yazışma derdi yok; cebinizden çıkan kuruş yok.</p>
               <div class="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4">
                 <a class="inline-flex items-center justify-center min-h-12 py-3 px-6 md:py-4 md:px-8 text-sm text-white font-semibold bg-brand-600 hover:bg-brand-500 rounded-lg transition" href="#nasil-calisir">
@@ -552,6 +556,52 @@
               <button type="button" class="faq-toggle w-full flex items-center justify-between min-h-12 p-4 md:p-6 text-left hover:bg-slate-50/50 transition-colors"><span class="text-base md:text-lg font-semibold text-slate-900 pr-4">Tazminat alma garantisi veriyor musunuz?</span><svg class="w-6 h-6 text-brand-600 flex-shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
               <div class="overflow-hidden transition-all duration-200 ease-in-out" style="max-height:0"><div class="px-6 pb-6"><p class="text-slate-600 leading-relaxed">Nihai karar sigorta şirketi ve tahkim merciine bağlı olduğundan kimse %100 garanti veremez; vermek de doğru olmaz. Bu yüzden dosyanızı önce ücretsiz inceler, yalnızca kazanma ihtimali güçlü dosyaları işleme alırız. Olumsuz bir sonuçta dahi cebinizden tek kuruş çıkmaz.</p></div></div>
             </div>
+            <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+              <button type="button" class="faq-toggle w-full flex items-center justify-between min-h-12 p-4 md:p-6 text-left hover:bg-slate-50/50 transition-colors"><span class="text-base md:text-lg font-semibold text-slate-900 pr-4">Değer kaybı tazminatında zaman aşımı süresi nedir?</span><svg class="w-6 h-6 text-brand-600 flex-shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+              <div class="overflow-hidden transition-all duration-200 ease-in-out" style="max-height:0"><div class="px-6 pb-6"><p class="text-slate-600 leading-relaxed">Trafik sigortasına başvuru için kaza tarihinden itibaren genellikle <strong>2 yıl</strong> içinde harekete geçmek gerekir. Bazı hâllerde ceza zamanaşımı nedeniyle bu süre uzayabilir; bu yüzden kazanın hemen ardından başvurmanız lehinizedir.</p></div></div>
+            </div>
+            <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+              <button type="button" class="faq-toggle w-full flex items-center justify-between min-h-12 p-4 md:p-6 text-left hover:bg-slate-50/50 transition-colors"><span class="text-base md:text-lg font-semibold text-slate-900 pr-4">Değer kaybını kasko mu, karşı tarafın sigortası mı öder?</span><svg class="w-6 h-6 text-brand-600 flex-shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+              <div class="overflow-hidden transition-all duration-200 ease-in-out" style="max-height:0"><div class="px-6 pb-6"><p class="text-slate-600 leading-relaxed">Değer kaybı, kusurlu sürücünün <strong>Zorunlu Trafik Sigortası</strong> (ZMSS) tarafından, kusur oranı kadar ödenir. Kendi kaskonuz bu farkı karşılamaz; bu nedenle karşı tarafın poliçesine başvurulur.</p></div></div>
+            </div>
+            <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+              <button type="button" class="faq-toggle w-full flex items-center justify-between min-h-12 p-4 md:p-6 text-left hover:bg-slate-50/50 transition-colors"><span class="text-base md:text-lg font-semibold text-slate-900 pr-4">Hangi durumlarda araç değer kaybı alınamaz?</span><svg class="w-6 h-6 text-brand-600 flex-shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+              <div class="overflow-hidden transition-all duration-200 ease-in-out" style="max-height:0"><div class="px-6 pb-6"><p class="text-slate-600 leading-relaxed">Kazada <strong>%100 kusurlu</strong> olmanız, aracın <strong>ağır hasar/pert</strong> kaydı bulunması, çok yüksek kilometre veya ileri yaş gibi durumlar talebi zorlaştırır. Dosyanızı ücretsiz inceleyip uygunluğunu net olarak değerlendiriyoruz.</p></div></div>
+            </div>
+            <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+              <button type="button" class="faq-toggle w-full flex items-center justify-between min-h-12 p-4 md:p-6 text-left hover:bg-slate-50/50 transition-colors"><span class="text-base md:text-lg font-semibold text-slate-900 pr-4">Adana ve çevresinde nasıl hizmet alabilirim?</span><svg class="w-6 h-6 text-brand-600 flex-shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+              <div class="overflow-hidden transition-all duration-200 ease-in-out" style="max-height:0"><div class="px-6 pb-6"><p class="text-slate-600 leading-relaxed">Seyhan'daki ofisimizden <strong>Adana, Mersin, Osmaniye, Hatay ve Kahramanmaraş</strong> başta olmak üzere bölge genelinde hizmet veriyoruz. Ayrıca tüm Türkiye'den online başvuru ile evraklarınızı uzaktan iletebilirsiniz.</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== SEO İçerik / Rehber ===== -->
+    <section class="py-12 md:py-16 lg:py-20 bg-white border-t border-slate-100" id="rehber">
+      <div class="w-full max-w-4xl px-4 md:px-6 mx-auto">
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-6">Araç Değer Kaybı Tazminatı Hakkında Bilmeniz Gerekenler</h2>
+        <div class="space-y-5 text-slate-600 leading-relaxed">
+          <p>Trafikte kusuru olmadığı hâlde kaza yapan araç sahipleri, çoğu zaman en büyük zararın onarım masrafı olduğunu düşünür. Oysa asıl kayıp, aracın <strong>ikinci el piyasa değerinde</strong> yaşanan düşüştür. <strong>Araç değer kaybı tazminatı</strong>, kazanın TRAMER kaydına işlenmesi ve "hasarlı/değişen" statüsü nedeniyle aracınızın satış fiyatında oluşan farkın, kusurlu tarafın sigortasından geri alınmasıdır.</p>
+
+          <h3 class="text-xl font-bold text-slate-900 pt-2">Değer Kaybı Nasıl Hesaplanır?</h3>
+          <p>Tazminat tutarı; aracın <strong>marka ve modeli, model yılı, kilometresi, hasarın niteliği</strong> (boya, kaporta, parça değişimi) ve kaza öncesi güncel piyasa değerine göre belirlenir. Genellikle hasarın ağırlığı arttıkça ve araç yeni/az kilometrede oldukça değer kaybı yükselir. Sitemizdeki <a href="deger-kaybi-hesaplayici.html" class="text-brand-600 underline font-medium">ücretsiz değer kaybı hesaplama</a> aracıyla tahmini tutarı dakikalar içinde öğrenebilirsiniz.</p>
+
+          <h3 class="text-xl font-bold text-slate-900 pt-2">Değer Kaybı Tazminatı Şartları</h3>
+          <ul class="list-disc pl-5 space-y-2">
+            <li>Kazada <strong>tam (%100) kusurlu olmamak</strong> — karşı tarafın kusuru oranında hak doğar.</li>
+            <li>Aracın <strong>boya, kaporta veya parça değişimi</strong> görmüş olması.</li>
+            <li>Kazanın üzerinden genellikle <strong>2 yıldan fazla</strong> süre geçmemiş olması.</li>
+            <li>Aracın <strong>ağır hasar / pert</strong> kaydının bulunmaması.</li>
+          </ul>
+
+          <h3 class="text-xl font-bold text-slate-900 pt-2">Başvuru Süreci ve Zaman Aşımı</h3>
+          <p>Süreç, kusurlu tarafın <strong>Zorunlu Trafik Sigortası</strong> şirketine yazılı başvuru ile başlar. Sigorta şirketi başvuruyu reddeder veya düşük tutar teklif ederse <strong>Sigorta Tahkim Komisyonu</strong>'na taşınır. Teminat Group olarak evrak hazırlığından tahsilata kadar tüm adımları sizin adınıza yürütürüz; <strong>peşin ücret alınmaz</strong>, hizmet bedeli yalnızca tazminat tahsil edildiğinde alınır.</p>
+
+          <h3 class="text-xl font-bold text-slate-900 pt-2">Adana ve Çevresinde Değer Kaybı Danışmanlığı</h3>
+          <p>Seyhan Auto City'deki ofisimizden <strong>Adana, Mersin, Osmaniye, Hatay ve Kahramanmaraş</strong> başta olmak üzere Çukurova bölgesi genelinde hizmet veriyoruz. Türkiye'nin her ilinden ise online başvuru ve uzaktan evrak iletimi ile sürecinizi başlatabilirsiniz.</p>
+
+          <div class="pt-2">
+            <a href="#hesapla" class="inline-flex items-center justify-center min-h-12 py-3 px-6 text-sm text-white font-semibold bg-brand-600 hover:bg-brand-500 rounded-lg transition">Aracımın Değer Kaybını Ücretsiz Hesapla →</a>
           </div>
         </div>
       </div>

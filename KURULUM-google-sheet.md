@@ -23,8 +23,8 @@ Buradaki `/d/` ile `/edit` arasındaki kısım sizin **Tablo ID'nizdir**:
 4. Kaydedin (disket).
 
 ```javascript
-var SHEET_ID = 'BURAYA_TABLO_ID_YAPISTIRIN';
-var BILDIRIM_EPOSTA = 'info@teminatgroup.com'; // bildirimleri almak istediğiniz e-posta
+var SHEET_ID = '1dB_joN5t81lTaIf6o78Lsp4nZzeRg6ZzNBPgQDKb7EM';
+var BILDIRIM_EPOSTA = 'teminatgrup@gmail.com'; // bildirimleri almak istediğiniz e-posta
 
 function doPost(e) {
   try {

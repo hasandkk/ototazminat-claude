@@ -7,6 +7,6 @@
  * Boş bırakılırsa form yine çalışır, sadece kayıt gönderilmez.
  */
 window.TEMINAT_CONFIG = {
-  sheetEndpoint: "https://script.google.com/macros/s/AKfycbxFrkCnrOHYd9-UV_aSi5M6-VDEuF4FZNFMDhrLELJQ88Y3v1aOtdhtxNPd4YP6Ox0l0g/exec",
+  sheetEndpoint: "https://script.google.com/macros/s/AKfycbxLoH9eD9kVvuWo0LHxK0rk26Edwrac3itxWPta4E6PpACT4FpE2oyXjISEp3a--M88/exec",
   whatsapp: "905526022079"
 };
